@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({Text, onClick, Type="button"}) =>{
+const CustomBtn = ({Text, onClick, Type="button"}) =>{
     return (
         <button
         className="bg-blue-500 text-white font-bold py-2 px-4 rounded custom-button"
@@ -11,4 +11,4 @@ const Button = ({Text, onClick, Type="button"}) =>{
     )
 }
 
-export default Button
+export default CustomBtn 

@@ -38,6 +38,34 @@ export const AuthProvider = ({ children }) =>{
         }
     };
 
+    const register = (email, password) => {
+        const usersStorage = JSON.parse(localStorage.getItem("user_db"));
 
-    return <AuthContext.Provider>{children}</AuthContext.Provider>
+        const hasUser = usersStorage?.filter((user)=> user.email === email)
+        
+        if(hasUser?.length){
+            return "Já tem uma conta com esse e-mail"
+        }
+
+        let newUser;
+
+        if(usersStorage){
+
+            newUser = [...usersStorage, {email, password}];
+        }else{
+            newUser = [{email, password}];
+        }
+
+        localStorage.setItem("user_db", JSON.stringify(newUser))
+        return
+    }
+
+    const exit = () =>{
+       setUser(null);
+       localStorage.removeItem("user_token") 
+    }
+
+    return <AuthContext.Provider
+    value={{user, signed: !!user, login, register, exit}}
+    >{children}</AuthContext.Provider>
 }

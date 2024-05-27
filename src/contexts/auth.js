@@ -19,6 +19,25 @@ export const AuthProvider = ({ children }) =>{
 
     }, [])
 
+    const login = (email, password) => {
+        const usersStorage = JSON.parse(localStorage.getItem("user_db"))
+
+        const hasUser = usersStorage?.filter((user)=> user.email === email)
+
+        if(hasUser?.length){
+            if(hasUser[0].email === email && hasUser[0].password === password){
+                const token = '12123';
+                localStorage.setItem('user_token', JSON.stringify({email, token}));
+                setUser({email, password});
+                return;
+            }else{
+                return "E-mail ou senha incorretos"
+            }
+        } else {
+            return "Usuário não cadastrado"
+        }
+    };
+
 
     return <AuthContext.Provider>{children}</AuthContext.Provider>
 }

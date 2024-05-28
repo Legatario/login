@@ -53,8 +53,8 @@ const Login = () =>{
                         <div className="mt-2">
                             <span className="text-center p-1 text-red-600">{error}</span>
                         </div>
-                        <div class="flex justify-center">
-                            <CustomBtn  
+                        <div className="flex justify-center">
+                            <CustomBtn 
                                 Text="Entrar"
                                 onClick={handleLogin}
                             />

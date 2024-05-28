@@ -7,6 +7,7 @@ import CustomBtn from "../../components/Button/CustomBtn";
 const Register = () =>{
 
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [passwordConfig, setpasswordConf] = useState(""); 
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -44,6 +45,12 @@ const Register = () =>{
                 <h2 className="text-center mb-5 text-black text-2xl uppercase">Cadastro</h2>
                     <div>
                         <Input 
+                            type="text"
+                            placeholder="Nome"
+                            value={name}
+                            onChange={(e) => [setName(e.target.value), setError("")]}
+                        />
+                        <Input 
                             type="email"
                             placeholder="Email"
                             value={email}
@@ -64,7 +71,7 @@ const Register = () =>{
                         <div className="mt-2">
                             <span className="text-center p-1 text-red-600">{error}</span>
                         </div>
-                        <div  class="flex justify-center">
+                        <div  className="flex justify-center">
                             <CustomBtn  
                                 Text="Cadastrar"
                                 onClick={handleRegister}

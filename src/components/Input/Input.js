@@ -3,7 +3,7 @@ import React from "react";
 const Input = ({type, placeholder, value, onChange}) =>{
     return (
         <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline custom-input"
+        className="w-full px-5 py-5 inline-block border-0 border-b-2 border-black bg-transparent outline-none min-w-180 text-base transition-all duration-300 ease-out rounded-none text-black placeholder-black"
         value={value}
         onChange={onChange}
         type={type}

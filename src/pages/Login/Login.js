@@ -4,7 +4,29 @@ import useAuth from "../../hooks/useAuth";
 import Input from "../../components/Input/Input";
 import CustomBtn from "../../components/Button/CustomBtn";
 
+
 const Login = () =>{
+
+        const { signin } = useAuth();
+        const navigate = useNavigate();
+
+        const handleLogin = () =>{
+            if(!email | !password){
+
+                setError("Preencha todos os campos");
+                return;
+            }
+
+        const res = signin(email, password);
+        
+        if(res){
+           setError(res)
+           return; 
+        }
+
+        navigate("/home");
+};
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -28,7 +50,7 @@ const Login = () =>{
                 <span>{error}</span>    
                 <CustomBtn  
                     Text="Entrar"
-                    // onClick={handleLogin}
+                    onClick={handleLogin}
                 />
                 <p>Não tem uma conta?
                     <span>

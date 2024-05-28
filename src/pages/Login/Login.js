@@ -7,7 +7,7 @@ import CustomBtn from "../../components/Button/CustomBtn";
 
 const Login = () =>{
 
-        const { signin } = useAuth();
+        const { login } = useAuth();
         const navigate = useNavigate();
 
         const handleLogin = () =>{
@@ -17,7 +17,7 @@ const Login = () =>{
                 return;
             }
 
-        const res = signin(email, password);
+        const res = login(email, password);
         
         if(res){
            setError(res)

@@ -6,9 +6,10 @@ import Register from "../pages/Register/Register";
 import useAuth from "../hooks/useAuth";
 
 const Private = ({ Item }) =>{
-    const { login } = useAuth();
+    const { signed } = useAuth();
 
-    return login > 0 ? <Item /> : <Login />
+
+    return signed > 0 ? <Item /> : <Login />
 }
 
 const RoutesApp = () =>{

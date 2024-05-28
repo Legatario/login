@@ -11,6 +11,32 @@ const Register = () =>{
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+    const navigate = useNavigate();
+    const { register } = useAuth();
+
+    const handleRegister = () =>{
+        if(!email | !password | !passwordConfig){
+            setError("Preencha todos os campos");
+            return;
+        }else if(password !== passwordConfig){
+            setError("As senhas são diferentes");
+            return;
+        }
+
+        const res = register(email, password);
+
+        if(res){
+            setError(res);
+            return;
+        }
+        setError("usúario cadastrado com sucesso!");
+
+        setTimeout(() => {
+            navigate("/")
+          }, 2000);
+
+    }
+
     return(
         <div>
         <h2>Login</h2>
@@ -36,7 +62,7 @@ const Register = () =>{
             <span>{error}</span>    
             <CustomBtn  
                 Text="Cadastrar"
-                // onClick={handleLogin}
+                onClick={handleRegister}
             />
             <p>Já tem uma conta?
                 <span>

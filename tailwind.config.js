@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       backgroundImage: theme => ({
         'login-image': "url('/src/assets/images/pordosol.jpg')",
-        'register-image': "url('/src/assets/images/nacerdosol.jpg')",
+        'register-image': "url('/src/assets/images/vector.jpg')",
       }),
       boxShadow: {
         'custom': '3px 3px 1px 0px #00000060',

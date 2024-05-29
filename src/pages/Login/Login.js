@@ -34,7 +34,7 @@ const Login = () =>{
     return(
         <div className="h-screen bg-login-image bg-cover bg-center bg-no-repeat">
             <div className="flex justify-center w-full items-center h-full">
-                <div className="bg-card-bg p-8 rounded-4p shadow-custom transition-all duration-500 ease-in-out hover:shadow-custom-hover">
+                <div className="bg-card-bg p-8 rounded-4p shadow-custom transition-all duration-500 ease-in-out hover:shadow-custom-hover max-w-[500px]">
                     <h2 className="text-center mb-5 text-black text-2xl uppercase">Login</h2>
                     <div>
                         <Input 
@@ -51,7 +51,7 @@ const Login = () =>{
                             onChange={(e) => [setPassword(e.target.value), setError("")]}
                         />
                         <div className="mt-2">
-                            <span className="text-center p-1 text-red-600">{error}</span>
+                            <span className="text-center p-1 text-red-600"><strong>{error}</strong></span>
                         </div>
                         <div className="flex justify-center">
                             <CustomBtn 

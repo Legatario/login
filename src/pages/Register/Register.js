@@ -6,16 +6,20 @@ import CustomBtn from "../../components/Button/CustomBtn";
 
 const Register = () =>{
 
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
-    const [passwordConfig, setpasswordConf] = useState(""); 
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("luis@gmail.com");
+    const [name, setName] = useState("luis");
+    const [passwordConfig, setpasswordConf] = useState("123456"); 
+    const [password, setPassword] = useState("123456");
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
     const { register } = useAuth();
 
     const handleRegister = () =>{
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
         if(!email | !password | !passwordConfig){
             setError("Preencha todos os campos");
             return;
@@ -24,16 +28,21 @@ const Register = () =>{
             return;
         }
 
-        const res = register(email, password);
+        if (!emailRegex.test(email)) {
+            setError("Formato de email inválido");
+            return;
+        }    
+
+        const res = register(email, password, name);
 
         if(res){
             setError(res);
             return;
         }
-        setError("usúario cadastrado com sucesso!");
+        setError("Usúario cadastrado com sucesso!");
 
         setTimeout(() => {
-            navigate("/")
+            // navigate("/")
           }, 2000);
 
     }
@@ -41,7 +50,7 @@ const Register = () =>{
     return(
         <div className="h-screen bg-register-image bg-cover bg-center bg-no-repeat">
             <div className="flex justify-center w-full items-center h-full">
-                <div className="bg-card-bg p-8 rounded-4p shadow-custom transition-all duration-500 ease-in-out hover:shadow-custom-hover2">
+                <div className="bg-card-bg p-8 rounded-4p shadow-custom transition-all duration-500 ease-in-out hover:shadow-custom-hover max-w-[500px]">
                 <h2 className="text-center mb-5 text-black text-2xl uppercase">Cadastro</h2>
                     <div>
                         <Input 
@@ -69,7 +78,7 @@ const Register = () =>{
                             onChange={(e) => [setpasswordConf(e.target.value), setError("")]}
                         />
                         <div className="mt-2">
-                            <span className="text-center p-1 text-red-600">{error}</span>
+                            <span className="text-center p-1 text-red-600"><strong>{error}</strong></span>
                         </div>
                         <div  className="flex justify-center">
                             <CustomBtn  

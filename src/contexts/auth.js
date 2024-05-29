@@ -38,26 +38,44 @@ export const AuthProvider = ({ children }) =>{
         }
     };
 
-    const register = (email, password) => {
-        const usersStorage = JSON.parse(localStorage.getItem("user_db"));
+    const register = (email, password, name) => {
+        // const usersStorage = JSON.parse(localStorage.getItem("user_db"));
 
-        const hasUser = usersStorage?.filter((user)=> user.email === email)
+        // const hasUser = usersStorage?.filter((user)=> user.email === email)
         
-        if(hasUser?.length){
-            return "Já tem uma conta com esse e-mail"
+        // if(hasUser?.length){
+        //     return "Já tem uma conta com esse e-mail"
+        // }
+
+        // let newUser;
+
+        // if(usersStorage){
+
+        //     newUser = [...usersStorage, {email, password}];
+        // }else{
+        //     newUser = [{email, password}];
+        // }
+
+        // localStorage.setItem("user_db", JSON.stringify(newUser))
+        // return
+
+
+        const data = {
+            "name": name,
+            "email": email,
+            "password": password,
+            "password_confirmation": password,
+            "persistent": true
         }
 
-        let newUser;
-
-        if(usersStorage){
-
-            newUser = [...usersStorage, {email, password}];
-        }else{
-            newUser = [{email, password}];
-        }
-
-        localStorage.setItem("user_db", JSON.stringify(newUser))
-        return
+        fetch('https://teste.reobote.tec.br/api/register',{
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Credentials": "true",
+            },
+            body: JSON.stringify(data)
+        }).then((response) => response.json()).then((response) =>{console.log(response)}).catch((err)=>console.log(err))
     }
 
     const exit = () =>{

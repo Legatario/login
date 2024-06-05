@@ -42,7 +42,7 @@ const Register = () =>{
         setError("Usúario cadastrado com sucesso!");
 
         setTimeout(() => {
-            // navigate("/")
+            navigate("/")
           }, 2000);
 
     }

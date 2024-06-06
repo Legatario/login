@@ -20,7 +20,7 @@
 - CSS3 <br>
 - JavaScript <br>
 - GitHub <br>
-- Tailwind
+- Tailwind <br>
 
 ##  Aviso
 

@@ -44,7 +44,7 @@ const Login = () =>{
                             onChange={(e) => [setEmail(e.target.value), setError("")]}
                             
                         />
-                                        <Input 
+                        <Input 
                             type="password"
                             placeholder="Senha"
                             value={password}
